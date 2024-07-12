@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="angular.js"></script>
+    <script src="Scripts.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <head charset="utf-8">
+        <title>ASC,DCS</title>
+    </head>
+
+<body ng-app="module3">
+    <div ng-controller="controller3">
+        <center>
+            <table border="1px">
+                <tr>
+                    <th ng-click="sortdata('name')"> NAME
+                        <div ng-class="getarrowclass('name')" ></div>
+                    </th>
+                    <th ng-click="sortdata('course')"> COURSE <div ng-class="getarrowclass('course')" ></div> </th>
+                    <th ng-click="sortdata('semester')"> SEMESTER <div ng-class="getarrowclass('semester')" ></div> </th>
+                    <th ng-click="sortdata('rollno')"> ROLL NO <div ng-class="getarrowclass('rollno')" ></div> </th>
+                </tr>
+                <tr ng-repeat="student in students | orderBy:sortcol:reversesort ">
+                    <td>{{ student.name | lowercase }}</td>
+                    <td>{{ student.course | uppercase }}</td>
+                    <td>{{ student.semester }}</td>
+                    <td>{{ student.rollno }}</td>
+
+                </tr>
+            </table>
+        </center>
+        <br>
+    </div>
+</body>
+
+</html>

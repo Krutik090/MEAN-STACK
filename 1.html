@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="angular.js"></script>
+    <script src="s1.js"></script>
+    <head charset="utf-8">
+    <title>Angular Project</title>
+</head>
+
+<body ng-app="mymodule">
+    <div ng-controller="mycontroller">
+        <div>
+            Name : {{ student.name }}
+        </div>
+       <div>
+            Course : {{ student.course }}
+       </div>
+       <div>
+            Gender : {{ student.gender }}
+       </div>
+       <div>
+            <img src="{{ images.i1 }}" height="690px" width="1400px" alt="{{ images.name }}"> 
+        </div>
+    </div>
+</body>
+
+</html>

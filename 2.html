@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="angular.js"></script>
+    <script src="s1.js"></script>
+    <meta charset="utf-8">
+    <title>FILTER</title>
+</head>
+
+<body ng-app="module2">
+    <div ng-controller="controller2">
+        <center>
+            NO. of Rows: <input type="number" min="0" step="1" max="5" ng-model="rowlimit">
+            <table border="1px">
+                <tr>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                </tr>
+                <tr ng-repeat="emp in employees | limitTo:rowlimit">
+                    <td> {{ emp.name | uppercase }} </td>
+                    <td>{{ emp.dob | date:"dd/MM/yyyy"}}</td>
+                    <td>{{ emp.gender | lowercase }}</td>
+                    <td>{{ emp.salary | currency:"Rs.":2}}</td>
+                </tr>
+            </table>
+        </center>
+    </div>
+</body>
+
+</html>
