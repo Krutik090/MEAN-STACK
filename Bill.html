@@ -41,7 +41,7 @@
                     <td>{{ billitem.quantity*billitem.price | currency:"Rs. " }}</td>
                 </tr>
             </table>
-            <h1>Total Bill: {{ totalBill | currency:"Rs. " }}</h1>
+            <h1>Total Bill: {{ cal() | currency:"Rs. " }}</h1>
         </center>
     </div>
 </body>
