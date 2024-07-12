@@ -55,3 +55,13 @@ var app3 = angular.module("module3", []).controller("controller3", function ($sc
     }
 
 });
+
+var app4 = angular.module("module4",[]).controller("colorcontroller",function($scope){
+    
+    $scope.msg="";
+    
+    $scope.message = {
+        backgroudcolor : "#ffffff",
+        textcolor : "#000000"
+    };
+});

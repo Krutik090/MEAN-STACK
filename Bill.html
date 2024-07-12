@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="angular.js"></script>
+    <script src="billgen.js"></script>
+    <title>Bill Generator</title>
+</head>
+
+<body ng-app="mymodule">
+    <div ng-controller="Billcontroller">
+        <center>
+            <table border="1">
+                <tr>
+                    <td> Select Item :</td>
+                    <td> <select ng-model="selecteditem" ng-options="item.name for item in items">
+                        </select> </td>
+                </tr>
+                
+                    <td>Quantity :</td>
+                    <td> <input type="number" ng-model="quantity" min="1"> </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="button" value="Add to Bill" ng-click="additem()">
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <table border="1">
+                <tr>
+                    <th> Name :</th>
+                    <th> Quantity :</th>
+                    <th> Price :</th>
+                    <th> Total :</th>
+                </tr>
+                <tr ng-repeat="billitem in billitems">
+                    <td>{{ billitem.name }}</td>
+                    <td>{{ billitem.quantity }}</td>
+                    <td>{{ billitem.price | currency:"Rs. " }}</td>
+                    <td>{{ billitem.quantity*billitem.price | currency:"Rs. " }}</td>
+                </tr>
+            </table>
+            <h1>Total Bill: {{ totalBill | currency:"Rs. " }}</h1>
+        </center>
+    </div>
+</body>
+
+</html>
