@@ -12,24 +12,42 @@ var app = angular.module("mymodule", []).controller("Billcontroller", function (
     $scope.selecteditem = $scope.items[0];
     $scope.quantity = 1;
     $scope.billitems = [];
-    $scope.totalBill=0;
-    $scope.additem = function()
-    {
-        var item = {
-            name : $scope.selecteditem.name,
-            price : $scope.selecteditem.price,
-            quantity : $scope.quantity,
+    $scope.totalBill = 0;
+
+    $scope.additem = function () {
+        
+        var existingItem = $scope.billitems.find(item => item.name == $scope.selecteditem.name);
+        if (existingItem) {
+            existingItem.quantity += $scope.quantity;
+        } else {
+            $scope.billitems.push
+            (
+                {
+                    name: $scope.selecteditem.name,
+                    price: $scope.selecteditem.price,
+                    quantity: $scope.quantity
+                }
+            );
+           
+            
+            // }
+            // var item = {
+            //     name: $scope.selecteditem.name,
+            //     price: $scope.selecteditem.price,
+            //     quantity: $scope.quantity,
+            // };
+
+            //$scope.billitems.push(item);
+            //$scope.totalBill = $scope.totalBill + ($scope.selecteditem.price * $scope.quantity);
+            // $scope.cal();
         };
 
-        $scope.billitems.push(item);
-        $scope.totalBill = $scope.totalBill + ($scope.selecteditem.price * $scope.quantity);
-        // $scope.cal();
-    };
+        $scope.cal = function(){
+            $scope.total = 0;
+            for (var i = 0; i < $scope.billitems.length; i++) {
+                $scope.total += $scope.billitems[i].price * $scope.billitems[i].quantity;
+            }
 
-    // $scope.cal = function(){
-    //     $scope.total = 0;
-    //     for (var i = 0; i < $scope.billitems.length; i++) {
-    //         $scope.total += $scope.billitems[i].price * $scope.billitems[i].quantity;
-    //     }
-    // }
-});
+            return $scope.total;
+        }
+    }});
