@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="angular.js"></script>
+  <script src="cc.js"></script>
+  <title>curruncy converter</title>
+</head>
+
+<body ng-app="cmodule">
+  <div ng-controller="currencycontroller">
+    <center>
+      <h1>Curruncy Converter</h1>
+      <table border="2px solid black">
+        <tr>
+          <td>Enter Amount::</td>
+          <td><input type="number" ng-model="amount"></td>
+        </tr>
+        <tr>
+          <td>From::</td>
+          <td><select ng-model="fromcr">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="INR">INR</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td>To::</td>
+          <td><select ng-model="tocr">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="INR">INR</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td align="center" colspan="2"><button ng-click="convert()">Convert</button></td>
+        </tr>
+      </table>
+      <h3> Converted Rupees:{{ convertedamt }} {{ tocr }}</h3>
+    </center>
+  </div>
+</body>
+
+</html>
