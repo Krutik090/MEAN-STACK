@@ -23,24 +23,6 @@ app.get('/',(req,res,next)=>{
     });
 });
 
-
-app.get('/about',(req,res,next)=>{
-    res.sendFile(path.join(__dirname,'aboutus.html'),(err)=>{
-        if(err){
-            console.error("Error While serving the HTML file", err);
-            next(err);
-        }
-    });
-});
-
-app.get('/contact',(req,res,next)=>{
-    res.sendFile(path.join(__dirname,'contectus.html'),(err)=>{
-        if(err){
-            console.error("Error While serving the HTML file", err);
-            next(err);
-        }
-    });
-});
 //Handling form submission
 //app.post('/submit-form'):- Define Route for post method and request to submit-form
 //req.body.txtName :- Contains the form data submitted by the user 
@@ -49,16 +31,6 @@ app.get('/contact',(req,res,next)=>{
 app.post('/submit-form',(req,res)=>{
     const name= req.body.txtName;
     res.send(`<h2>Form Submitted Name: ${name}</h2>`);
-});
-
-app.post('/about',(req,res)=>{
-    const about= req.body.txtabout;
-    res.send(`<h2>Form Submitted About: ${about}</h2>`);
-});
-
-app.post('/contact',(req,res)=>{
-    const contact= req.body.cno;
-    res.send(`<h2>Form Submitted Contact NO: ${contact}</h2>`);
 });
 
 // We are using app instance to listen to specify port number
