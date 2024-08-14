@@ -1,0 +1,16 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "nahi lakhvu",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node hello.js"
+  },
+  "author": "Krutik Thakar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "url": "^0.11.4"
+  }
+}
