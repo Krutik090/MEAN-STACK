@@ -53,13 +53,12 @@ app.post('/submit-form',(req,res)=>{
 
 app.post('/about',(req,res)=>{
     const about= req.body.txtabout;
-    res.send(`<h2>Form Submitted About: ${about}</h2>`);
+    const contact = req.body.cno;
+
+        res.send(`<h2>Form Submitted About: ${about} <br> Contact No : ${contact}</h2>`);
 });
 
-app.post('/contact',(req,res)=>{
-    const contact= req.body.cno;
-    res.send(`<h2>Form Submitted Contact NO: ${contact}</h2>`);
-});
+
 
 // We are using app instance to listen to specify port number
 app.listen(port,()=> {
