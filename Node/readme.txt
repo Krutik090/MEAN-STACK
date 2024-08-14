@@ -1,4 +1,4 @@
-   We are not able to use dom object in node.js (Document.getelementbyid),prompt,alert
+We are not able to use dom object in node.js (Document.getelementbyid),prompt,alert
 NODE MUDULES
 It is a simple or complex functionality organized in single or multiple file.
 Which can be reuse throughout the node js application.
