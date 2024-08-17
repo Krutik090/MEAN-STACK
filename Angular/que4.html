@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body ng-app="studentApp" ng-controller="studentController">
+
+    <h1>Student Information</h1>
+
+    <!-- Dropdown to select student by ID -->
+    <label for="studentSelect">Select Student ID:</label>
+    <select id="studentSelect" ng-model="selectedStudentID" ng-change="filterStudent()">
+        <option value="">--Select Student--</option>
+        <option ng-repeat="student in students" value="{{student.sID}}">
+            {{student.sID}}
+        </option>
+    </select>
+
+    <!-- Button to display the result -->
+    <button ng-click="displayResult()">Display Result</button>
+
+    <!-- Table to display student information -->
+    <table ng-if="filteredStudent">
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Course</th>
+            <th>Subject 1</th>
+            <th>Subject 2</th>
+            <th>Subject 3</th>
+            <th>Total</th>
+            <th>Percentage</th>
+            <th>Grade</th>
+        </tr>
+        <tr ng-repeat="student in filteredStudent">
+            <td>{{student.sName}}</td>
+            <td>{{student.sID}}</td>
+            <td>{{student.course}}</td>
+            <td>{{student.subject1}}</td>
+            <td>{{student.subject2}}</td>
+            <td>{{student.subject3}}</td>
+            <td>{{student.total >= 50 ? student.total : 'N/A'}}</td>
+            <td>{{student.percentage >= 50 ? student.percentage : 'N/A'}}%</td>
+            <td>{{student.grade}}</td>
+        </tr>
+    </table>
+
+    <!-- AngularJS Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
