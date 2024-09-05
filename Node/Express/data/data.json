@@ -1,0 +1,28 @@
+[
+    {
+        "id" : 1,
+        "name" : "krutik",
+        "gender" : "Male",
+        "city" : "Anand",
+        "email" : "krutik123@gmail.com",
+        "mobno" : 932802347
+    },
+
+    {
+        "id" : 2,
+        "name" : "bhavik",
+        "gender" : "Male",
+        "city" : "Anand",
+        "email" : "bhavik123@gmail.com",
+        "mobno" : 9328045347
+    },
+
+    {
+        "id" : 3,
+        "name" : "deep",
+        "gender" : "Male",
+        "city" : "Anand",
+        "email" : "deep123@gmail.com",
+        "mobno" : 934562347
+    }
+]
