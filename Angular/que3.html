@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="messageApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS MVC Example</title>
+    <!-- Include AngularJS from CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+    <!-- Use ng-controller to link the controller with the view -->
+    <div ng-controller="MessageController">
+        <!-- Display the message from the controller -->
+        <h1>{{ message }}</h1>
+    </div>
+
+    <!-- Link to the app's JavaScript file -->
+    <script src="app.js"></script>
+
+</body>
+</html>
