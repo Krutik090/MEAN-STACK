@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo CRUD</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">User Form</h2>
+        <form action="frmSubmit">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <!-- Hidden Input for ID -->
+                    <input type="hidden" class="form-control" id="txtid" name="txtid">
+
+                    <!-- Name Field -->
+                    <div class="form-group mb-3">
+                        <label for="txtname">Enter Name:</label>
+                        <input type="text" class="form-control" id="txtname" name="txtname" placeholder="Enter your name">
+                    </div>
+
+                    <!-- Age Field -->
+                    <div class="form-group mb-3">
+                        <label for="txtage">Enter Age:</label>
+                        <input type="text" class="form-control" id="txtage" name="txtage" placeholder="Enter your age">
+                    </div>
+
+                    <!-- City Field -->
+                    <div class="form-group mb-3">
+                        <label for="txtcity">Enter City:</label>
+                        <input type="text" class="form-control" id="txtcity" name="txtcity" placeholder="Enter your city">
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group mb-3">
+                        <label for="txtemail">Enter Email:</label>
+                        <input type="email" class="form-control" id="txtemail" name="txtemail" placeholder="Enter your email">
+                    </div>
+
+                    <!-- Contact Number Field -->
+                    <div class="form-group mb-3">
+                        <label for="txtcno">Enter Contact No.:</label>
+                        <input type="text" class="form-control" id="txtcno" name="txtcno" placeholder="Enter your contact number">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group mb-3 text-center">
+                        <input type="button" value="Submit" class="btn btn-primary" name="btnsubmit">
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <!-- User List Display -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6 text-center">
+                <h3>User Data</h3>
+                <ul id="userList" class="list-group"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchUsers() {
+            const response = await fetch('/users');
+            const users = await response.json();
+            const userList = document.getElementById('userList');
+            userList.innerHTML = '';
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.classList.add('list-group-item');
+                li.innerHTML = `${user.name} is ${user.age} years old`;
+                li.innerHTML += `<div class="mt-2"><button class="btn btn-warning btn-sm" onclick="editUser(${user.id})">Edit</button> <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})">Delete</button></div>`;
+                userList.appendChild(li);
+            });
+        }
+
+        async function submitForm(event){
+            const id = document.getElementById('txtId').value;
+            const name = document.getElementById('txtname').value;
+            const age = document.getElementById('txtage').value;
+            const city = document.getElementById('txtcity').value;
+            const email = document.getElementById('txtemail').value;
+            const cno = document.getElementById('txtcno').value;
+
+            const url = id? `/users/${id}` : `/users`;
+
+            const method = id? 'PUT' : 'POST';
+
+            const response = await fetch(url,{
+                method,
+                headers :{'Content-type':'application/json'},
+                body: JSON.stringify({name,age})
+
+            });
+
+            fetchUsers();
+
+        }
+    </script>
+</body>
+
+</html>

@@ -16,33 +16,49 @@ Which can be reuse throughout the node js application.
 MONGO DB
 1) Create DB : School
 -> use school
+
 2) Create Collection : Students
 3) Insert Document : name, age, subjects, grade
 4) Insert 10 records.
 ->db.students.insertMany([{name:"smit",age:16,subject:['ganit','vigyan','samajikvigyan'],grade:'x'}])
+
 5) Find a record which have name = Rahul
 ->db.students.find({name:"Rahul"})
+
 6) Find all Students who are older than 15
 -> db.students.find({age:{$gt : 15}})
+
 7) Find all students who are either grade 'A' or grade 'B'
 -> db.students.find({$or:[{grade:'a'},{grade:'b'}]})
+
 8) Retrieve name and age column only
 ->db.students.find({},{name:1,age:1})
+
 9) Sort Students by age in desc order
 ->db.students.find().sort({age:-1})
+
 10) Count the number of students from collection
 -> db.students.find({}).count()
+
 11) Update grade of Rahul to A+
 -> db.students.updateOne({name:"krutik"},{$set:{grade:'A+'}})
+
 12) Update grade of all students to B who are older then 15 age
 -> db.students.updateMany({age:{$gt:15}},{$set:{grade:'B'}}
+
 13) Add new fields status to all the students
 ->db.students.updateMany({},{ $set: { status: 'single' } } )
+
 14) Delete student where name = Rahul
 -> db.students.deleteOne({name:"Rahul"})
+
 15) Remove status field from collection
 ->db.students.updateMany({},{ $unset: { status: '' } } )
+
 16) Delete all the students who are younger than 10
 ->db.students.deleteMany({age:{$gt:10}})
+
 17) Find average age of students
 -> db.students.aggregate([{$group:{_id:null,avrageAge:{$avg:'$age'}}}])
+
+18) Set up schema validation for student collection to ensure that document must have name and age field in the collection.
