@@ -1,61 +1,59 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+const mongoose = require('mongoose');
 const path = require('path');
+const cors = require('cors');
+const { error } = require('console');
+
 
 const app = express();
-const port = 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const dataFilePath = path.join(__dirname, 'data', 'data.json');
+mongoose.connect('mongodb://localhost:27017/demoDB', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log(`Connected...`))
+    .catch((error) => console.log('Error: ', error));
 
-function readData() {
-    return JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
-}
+const studentSchema = new mongoose.Schema({ name: String, id: String, course: String })
+const Student = mongoose.model('Student', studentSchema);
 
-function writeData(data) {
-    fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 4));
-}
 
-//Insert Data
-app.post('/users', (req, res) => {
 
-    const users = readData();
-    const newUser = {
+app.post('/students', (req, res) => {
+    const newStud = new Student(req.body);
+    newStud.save().then(student => res.json(student))
+        .catch((error) => res.status(400).json(error));
+})
 
-        id: users.length ? users[users.length - 1].id + 1 : 1,
-        name: req.body.name,
-        age: parseInt(req.body.age, 10)
+app.get('/students/:name', (req, res) => {
+    const studentName = req.params.name;
+    Student.findOne({ name: studentName })
+        .then(student => {
+            if (student) {
+                res.json(student);
+            } else {
+                res.status(404).json({ message: "Student Not Found" });
+            }
+        }).catch((error) => res.status(400).json(error));
+})
 
-    };
+app.get('/students', (req, res) => {
+    Student.find().then(students => res.json(students)).catch((error) => res.status(400).json(error));
+})
 
-    users.push(newUser);
-    writeData(users);
-    res.json(newUser);
+app.put('/students/:id', (req, res) => {
+    Student.findByIdAndUpdate(req.params.id).then(() => res.json({ success: true }))
+        .catch((error) => res.status(400).json(error));
 });
 
-//View Data
-app.get('/users',(req,res) => {
+app.delete('/students/:id', (req, res) => {
+    Student.findByIdAndDelete(req.params.id).then(() => res.json({ success: true })).catch((error) => res.status(400).json(error));
+})
 
-    const users = readData();
-    res.json(users);
-
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-//Delete Data
-app.delete('/users/:id',(req,res)=>{
-
-    const userId = parseInt(req.params.id,10);
-    let users = readData();
-    users = users.filter(u => u.id !== userId)
-    writeData(users);
-    res.json({message :'User Deleted'}); 
-
-});
-
-
-app.listen(port,()=>{
-    console.log(`Server is running on http://localhost:${port}`);
-});
+app.listen(4200, () => console.log('server running on http://localhost:4200'));
