@@ -1,96 +1,104 @@
-## ✅ `README.md` for `MEAN-STACK`
+## ✅ `README.md` for AngularJS-based MEAN-STACK
 
 ```markdown
-# 🌐 MEAN Stack – Full Stack Web App Demo
+# 🌐 MEAN Stack – AngularJS Web App Demo
 
-This repository is a **training/demo project** built with the **MEAN stack (MongoDB, Express.js, Angular, Node.js)**. It demonstrates how to build a full-stack web application with a separate Angular frontend and Express backend connected to a MongoDB database.
+This is a basic **MEAN stack** project that uses:
 
-Ideal for students and developers learning how the MEAN stack works together in real-world applications.
+- **MongoDB** for the database  
+- **Express.js** as the backend framework  
+- **AngularJS (1.x)** for the frontend  
+- **Node.js** as the server environment
 
----
-
-## 🧩 What’s Covered
-
-- Angular 14+ frontend (SPA) with routing and services
-- Express.js RESTful API backend
-- MongoDB integration using Mongoose
-- Component-based architecture
-- CRUD operations with HTTP
-- Development and production environment setup
+This project is intended for **training and demonstration purposes** to help understand how the original MEAN stack works together to build full-stack web applications.
 
 ---
 
-## 📁 Directory Structure
+## 🧩 Key Features
 
+- AngularJS 1.x frontend with routing and controllers
+- RESTful API built with Express.js and Node.js
+- MongoDB for data storage (with Mongoose ODM)
+- Full CRUD operations (Create, Read, Update, Delete)
+- Separation of frontend and backend logic
+- Bootstrap for UI styling (if used)
 
+---
+
+## 📁 Project Structure
 
 MEAN-STACK/
 ├─ backend/               # Node.js + Express + MongoDB API
 │  ├─ routes/             # API route handlers
-│  ├─ controllers/        # Logic for API endpoints
 │  ├─ models/             # Mongoose schemas
-│  └─ server.js           # Entry point for backend server
+│  └─ server.js           # Main backend entry
 │
-├─ frontend/              # Angular frontend application
-│  ├─ src/app/            # Components, services, routing
-│  ├─ angular.json        # Angular config
-│  └─ package.json        # Frontend dependencies
+├─ frontend/              # AngularJS app
+│  ├─ index.html          # Root HTML
+│  ├─ app.js              # AngularJS module/config
+│  ├─ controllers/        # AngularJS controllers
+│  └─ services/           # API service integration
 │
-├─ README.md              # Documentation
-└─ .env.example           # Sample backend config
-
+├─ .env.example           # Sample environment config
+├─ package.json           # Node dependencies
+└─ README.md
 
 ---
 
-## 🚀 How to Run the Project
+## 🚀 How to Run Locally
 
-### 1. Clone the Repo
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Krutik090/MEAN-STACK.git
 cd MEAN-STACK
 ````
 
----
-
-### 2. Backend Setup (Express + MongoDB)
+### 2. Setup and Run Backend (Node + Express)
 
 ```bash
 cd backend
 npm install
-cp .env.example .env     # Add your MongoDB URI
+cp .env.example .env        # Configure MongoDB URI and PORT
 npm start
 ```
 
+> Backend runs on `http://localhost:3000` (or as configured)
+
 ---
 
-### 3. Frontend Setup (Angular)
+### 3. Run Frontend (AngularJS)
+
+You can run the frontend in any static server:
+
+#### Option A: Use VS Code Live Server Extension
+
+Open `frontend/` and click **Go Live**
+
+#### Option B: Use Python HTTP server
 
 ```bash
-cd ../frontend
-npm install
-ng serve
+cd frontend
+python3 -m http.server 5500
+# visit http://localhost:5500
 ```
 
-Frontend runs on `http://localhost:4200`
-Backend runs on `http://localhost:3000` (or as configured)
-
 ---
 
-## ✅ Prerequisites
+## ✅ Requirements
 
-* Node.js v16+
-* Angular CLI
+* Node.js v14+
 * MongoDB (local or Atlas)
-* Postman (for testing APIs)
+* A browser that supports AngularJS
+* Static file server (Live Server or Python)
 
 ---
 
-## 📦 Technologies Used
+## 👨‍🏫 Who Is This For?
 
-* **Frontend:** Angular, TypeScript, Bootstrap
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB + Mongoose
+* Students learning the original MEAN stack
+* Developers exploring AngularJS (1.x)
+* Anyone interested in building full-stack apps from scratch
 
 ---
 
@@ -103,7 +111,7 @@ Backend runs on `http://localhost:3000` (or as configured)
 
 ## 📄 License
 
-This repository is intended for educational and demonstration purposes. No license applied.
+This repository is shared for learning and demonstration. No license applied.
 
 ```
 
@@ -111,9 +119,9 @@ This repository is intended for educational and demonstration purposes. No licen
 
 ## 🔖 Short GitHub Description (for “About” section)
 
-> A demo full-stack web app using the MEAN stack (MongoDB, Express, Angular, Node.js) for training and practice.
+> A classic MEAN stack demo app using AngularJS (1.x), Express, Node, and MongoDB for full-stack training and learning.
 
 ---
 
-Let me know if you want to add Docker support, Swagger docs for the API, or convert this into a deployable portfolio project. Ready for your next repo anytime! ✅
+Let me know if you'd like to modernize this repo (e.g., migrate it to Angular 14+) or need a visual diagram added to the README! Ready for your next one ✅
 ```
