@@ -25,26 +25,6 @@ This project is intended for **training and demonstration purposes** to help und
 
 ---
 
-## 📁 Project Structure
-
-MEAN-STACK/
-├─ backend/               # Node.js + Express + MongoDB API
-│  ├─ routes/             # API route handlers
-│  ├─ models/             # Mongoose schemas
-│  └─ server.js           # Main backend entry
-│
-├─ frontend/              # AngularJS app
-│  ├─ index.html          # Root HTML
-│  ├─ app.js              # AngularJS module/config
-│  ├─ controllers/        # AngularJS controllers
-│  └─ services/           # API service integration
-│
-├─ .env.example           # Sample environment config
-├─ package.json           # Node dependencies
-└─ README.md
-
----
-
 ## 🚀 How to Run Locally
 
 ### 1. Clone the Repository
@@ -59,7 +39,6 @@ cd MEAN-STACK
 ```bash
 cd backend
 npm install
-cp .env.example .env        # Configure MongoDB URI and PORT
 npm start
 ```
 
