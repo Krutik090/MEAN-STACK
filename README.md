@@ -94,13 +94,5 @@ This repository is shared for learning and demonstration. No license applied.
 
 ```
 
----
-
-## 🔖 Short GitHub Description (for “About” section)
-
-> A classic MEAN stack demo app using AngularJS (1.x), Express, Node, and MongoDB for full-stack training and learning.
-
----
-
 Let me know if you'd like to modernize this repo (e.g., migrate it to Angular 14+) or need a visual diagram added to the README! Ready for your next one ✅
 ```
